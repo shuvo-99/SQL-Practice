@@ -1,0 +1,1 @@
+select ROUND(LAT_N,4) from ( select LAT_N,row_number() over(order by LAT_N) as rn from station) as sub where sub.rn = (select CEIL(count(1)/2) from station);
